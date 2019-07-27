@@ -1,4 +1,4 @@
-# List all preinstalled applications
+Write-Host "List of preinstalled applications"
 Get-AppxPackage | ft Name, PackageFullName -AutoSize
 
 # Applications to be removed
@@ -22,10 +22,12 @@ $appList = @(
     "Microsoft.Print3D"
 )
 
+Write-Host "Removing applications"
+
 # Remove applications
 foreach ($app in $appList) {
     Get-AppxPackage *$app* | Remove-AppxPackage
 }
 
-# List remaining applications
+Write-Host "List of remaining applications"
 Get-AppxPackage | ft Name, PackageFullName -AutoSize;
